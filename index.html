@@ -6,27 +6,67 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <div class="frame">
-      <div class="display"></div>
-      <button class="btn clear"></button>
-      <button class="btn 7"></button>
-      <button class="btn 6"></button>
-      <button class="btn 5"></button>
-      <button class="btn 4"></button>
-      <button class="btn 3"></button>
-      <button class="btn 2"></button>
-      <button class="btn 1"></button>
-      <button class="btn 0"></button>
-      <button class="btn divide"></button>
-      <button class="btn multiply"></button>
-      <button class="btn substract"></button>
-      <button class="btn add"></button>
-      <button class="btn equals"></button>
-      <button class="btn dot"></button>
+  <div class="wrapper">
+    <div class="grid-container">
+    <div class="display">
+      <div class="display__item"></div>
+    </div>
+    <div class="zero">
+      <button class="btn" data-operator="zero">0</button>
+    </div>
+    <div class="dot">
+      <button class="btn" data-operator="dot">.</button>
+    </div>
+    <div class="equals">
+      <button class="btn btn--orange" data-operator="equals">=</button>
+    </div>
+    <div class="one">
+      <button class="btn" data-operator="one">1</button>
+    </div>
+    <div class="two">
+      <button class="btn" data-operator="two">2</button>
+    </div>
+    <div class="three">
+      <button class="btn" data-operator="three">3</button>
+    </div>
+    <div class="plus">
+      <button class="btn btn--orange" data-operator="plus">+</button>
+    </div>
+    <div class="four">
+      <button class="btn" data-operator="four">4</button>
+    </div>
+    <div class="five">
+      <button class="btn" data-operator="five">5</button>
+    </div>
+    <div class="six">
+      <button class="btn" data-operator="six">6</button>
+    </div>
+    <div class="minus">
+      <button class="btn btn--orange" data-operator="minus">-</button>
+    </div>
+    <div class="seven">
+      <button class="btn" data-operator="seven">7</button>
+    </div>
+    <div class="eight">
+      <button class="btn" data-operator="eight">8</button>
+    </div>
+    <div class="nine">
+      <button class="btn" data-operator="nine">9</button>
+    </div>
+    <div class="multiply">
+      <button class="btn btn--orange" data-operator="multiply">*</button>
+    </div>
+    <div class="clear">
+      <button class="btn" data-operator="clear">CLEAR</button>
+    </div>
+    <div class="backspace">
+      <button class="btn" data-operator="backspace">B</button>
+    </div>
+    <div class="divide">
+      <button class="btn btn--orange" data-operator="divide">/</button>
+    </div>
     </div>
   </div>
-  
   <script src="app.js"></script>
 </body>
 </html>
