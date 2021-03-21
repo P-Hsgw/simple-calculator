@@ -1,8 +1,8 @@
-let displayValue = "";
-let userChoice = "";
+let displayValue = ""
+let operator = ""
 
-const btns = document.querySelectorAll(".btn")
-const display = document.querySelector(".display__item")
+const btns = document.querySelectorAll(".btn");
+const display = document.querySelector(".display__item");
 
 function sum (...number) {
   return number.reduce((totalValue, value) => {
@@ -18,7 +18,7 @@ function substract (...number) {
 
 function multiply (...number) {
   return number.reduce((totalValue, value) => {
-    return totalValue * value;
+    totalValue * value;
  })
 }
 
@@ -38,10 +38,16 @@ function operate (operator, number1, number2) {
   } else if (operator == "/") {
     return divide(number1, number2)
   }
-
 }
 
-function displayUserChoice (userChoice) {
+function addOperator (userChoice) {
+  if (userChoice === "plus") {
+    operator = "+";
+    displayValue = `${displayValue}${operator}`;
+  }
+}
+
+function displayNumbers (userChoice) {
   if (userChoice === "one") {
     displayValue += 1;
   }
@@ -81,17 +87,14 @@ function displayUserChoice (userChoice) {
   if (userChoice === "backspace") {
     displayValue = displayValue.slice(0, -1)
   }
-
-
 }
 
 for (const btn of btns) {
+  let userChoice = "";
   btn.addEventListener('click', e => {
     userChoice = e.target.dataset.operator;
-    displayUserChoice(userChoice)
+    displayNumbers(userChoice)
+    addOperator(userChoice)
     display.innerHTML = displayValue
   })
 }
-
-
-// PUSH value to array and display array in innerHTML
