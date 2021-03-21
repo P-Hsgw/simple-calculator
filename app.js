@@ -41,8 +41,20 @@ function operate (operator, number1, number2) {
 }
 
 function addOperator (userChoice) {
-  if (userChoice === "plus") {
+  if (userChoice === "plus" && displayValue) {
     operator = "+";
+    displayValue = `${displayValue}${operator}`;
+  }
+  if (userChoice === "minus" && displayValue) {
+    operator = "-";
+    displayValue = `${displayValue}${operator}`;
+  }
+  if (userChoice === "divide" && displayValue) {
+    operator = "/";
+    displayValue = `${displayValue}${operator}`;
+  }
+  if (userChoice === "multiply" && displayValue) {
+    operator = "/";
     displayValue = `${displayValue}${operator}`;
   }
 }
