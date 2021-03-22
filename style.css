@@ -19,7 +19,7 @@
     "one two three plus"
     "zero zero dot equals";
 }
-.display { grid-area: display; background-color: grey;}
+.display { grid-area: display; background-color: grey; color: white;}
 .zero { grid-area: zero; }
 .dot { grid-area: dot; }
 .equals { grid-area: equals; }

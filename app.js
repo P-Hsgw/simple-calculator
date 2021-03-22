@@ -20,7 +20,6 @@ function multiply (number1, number2) {
   return result= number1 * number2;
 }
 
-
 function divide (number1, number2) {
   return result=number1 / number2;
 }
@@ -101,7 +100,11 @@ function displayNumbers (userChoice) {
     displayValue += 0
   }
   if (userChoice === "clear") {
-    displayValue = ""
+    displayValue = "";
+    computingValue = [];
+    operator = "";
+    compute = false;
+    result = undefined
   }
   if (userChoice === "backspace") {
     displayValue = displayValue.slice(0, -1)
