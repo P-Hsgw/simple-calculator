@@ -1,41 +1,38 @@
 let displayValue = ""
+let computingValue = [];
 let operator = ""
+let compute = false;
+let result;
 
 const btns = document.querySelectorAll(".btn");
 const display = document.querySelector(".display__item");
+const displayResult = document.querySelector(".display__result")
 
-function sum (...number) {
-  return number.reduce((totalValue, value) => {
-     return totalValue + value;
-  })
+function sum (number1, number2) {
+  return result=number1 + number2;
 }
 
-function substract (...number) {
-  return number.reduce((totalValue, value) => {
-    return totalValue - value;
- })
+function substract (number1, number2) {
+  return result= number1 - number2;
 }
 
-function multiply (...number) {
-  return number.reduce((totalValue, value) => {
-    totalValue * value;
- })
+function multiply (number1, number2) {
+  return result= number1 * number2;
 }
 
-function divide (...number) {
-  return number.reduce((totalValue, value) => {
-    return totalValue / value;
- })
+
+function divide (number1, number2) {
+  return result=number1 / number2;
 }
 
 function operate (operator, number1, number2) {
-  if (operator == "+") {
+  if (operator == "+" && compute) {
     return sum(number1, number2)
-  } else if (operator == "-") {
+  } else if (operator == "-" && compute) {
     return substract(number1, number2)
-  } else if (operator == "*") {
+  } else if (operator == "*" && compute) {
     return multiply(number1, number2) 
-  } else if (operator == "/") {
+  } else if (operator == "/" && compute) {
     return divide(number1, number2)
   }
 }
@@ -43,19 +40,29 @@ function operate (operator, number1, number2) {
 function addOperator (userChoice) {
   if (userChoice === "plus" && displayValue) {
     operator = "+";
-    displayValue = `${displayValue}${operator}`;
+    computingValue.push(parseInt(displayValue))
+    displayValue = ""; 
   }
   if (userChoice === "minus" && displayValue) {
     operator = "-";
-    displayValue = `${displayValue}${operator}`;
+    computingValue.push(parseInt(displayValue));
+    displayValue = ""; 
   }
   if (userChoice === "divide" && displayValue) {
     operator = "/";
-    displayValue = `${displayValue}${operator}`;
+    computingValue.push(parseInt(displayValue))
+    displayValue = ""; 
   }
   if (userChoice === "multiply" && displayValue) {
-    operator = "/";
-    displayValue = `${displayValue}${operator}`;
+    operator = "*";
+    computingValue.push(parseInt(displayValue))
+    displayValue = ""; 
+  }
+  if (userChoice === "equals") {
+    computingValue.push(parseInt(displayValue))
+    compute = true;
+    displayValue = ""; 
+    setTimeout (function() {compute = false;}, 0)
   }
 }
 
@@ -107,6 +114,13 @@ for (const btn of btns) {
     userChoice = e.target.dataset.operator;
     displayNumbers(userChoice)
     addOperator(userChoice)
+    console.log(operate(operator, computingValue[0], computingValue[1]))
+    console.log(operator)
+    console.log(computingValue)
+    console.log(compute)
     display.innerHTML = displayValue
+    if (result != undefined) {
+      displayResult.innerHTML = result;
+    } 
   })
 }

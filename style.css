@@ -39,6 +39,10 @@
 .backspace { grid-area: backspace; }
 .divide { grid-area: divide; }
 
+.display__result {
+  text-align: right;
+}
+
 .btn {
   width: 100%;
   height: 100%;
