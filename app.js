@@ -1,12 +1,12 @@
-let displayValue = ""
+let displayValue = "";
 let computingValue = [];
-let operator = ""
+let operator = "";
 let compute = false;
 let result;
 
 const btns = document.querySelectorAll(".btn");
 const display = document.querySelector(".display__item");
-const displayResult = document.querySelector(".display__result")
+const displayResult = document.querySelector(".display__result");
 
 function sum (number1, number2) {
   return result=number1 + number2;
@@ -36,77 +36,77 @@ function operate (operator, number1, number2) {
   }
 }
 
-function addOperator (userChoice) {
-  if (userChoice === "plus" && displayValue) {
+function addOperator (choice) {
+  if (choice === "plus" && displayValue) {
     operator = "+";
-    computingValue.push(parseInt(displayValue))
+    computingValue.push(parseFloat(displayValue))
     displayValue = ""; 
   }
-  if (userChoice === "minus" && displayValue) {
+  if (choice === "minus" && displayValue) {
     operator = "-";
-    computingValue.push(parseInt(displayValue));
+    computingValue.push(parseFloat(displayValue));
     displayValue = ""; 
   }
-  if (userChoice === "divide" && displayValue) {
+  if (choice === "divide" && displayValue) {
     operator = "/";
-    computingValue.push(parseInt(displayValue))
+    computingValue.push(parseFloat(displayValue))
     displayValue = ""; 
   }
-  if (userChoice === "multiply" && displayValue) {
+  if (choice === "multiply" && displayValue) {
     operator = "*";
-    computingValue.push(parseInt(displayValue))
+    computingValue.push(parseFloat(displayValue))
     displayValue = ""; 
   }
-  if (userChoice === "equals") {
-    computingValue.push(parseInt(displayValue))
+  if (choice === "equals") {
+    computingValue.push(parseFloat(displayValue))
     compute = true;
     displayValue = ""; 
-    setTimeout (function() {compute = false;}, 0)
+    setTimeout (() => {compute = false}, 0)
   }
 }
 
-function displayNumbers (userChoice) {
-  if (userChoice === "one") {
+function displayNumbers (choice) {
+  if (choice === "one") {
     displayValue += 1;
   }
-  if (userChoice === "two") {
+  if (choice === "two") {
     displayValue += 2;
   }
-  if (userChoice === "three") {
+  if (choice === "three") {
     displayValue += 3;
   }
-  if (userChoice === "four") {
+  if (choice === "four") {
     displayValue += 4
   }
-  if (userChoice === "five") {
+  if (choice === "five") {
     displayValue += 5
   }
-  if (userChoice === "six") {
+  if (choice === "six") {
     displayValue += 6
   }
-  if (userChoice === "seven") {
+  if (choice === "seven") {
     displayValue += 7
   }
-  if (userChoice === "eight") {
+  if (choice === "eight") {
     displayValue += 8
   }
-  if (userChoice === "nine") {
+  if (choice === "nine") {
     displayValue += 9
   }
-  if (userChoice === "dot" && displayValue.indexOf(".") === -1 ) {
+  if (choice === "dot" && displayValue.indexOf(".") === -1 ) {
     displayValue += "."
   }
-  if (userChoice === "zero" && displayValue ) {
+  if (choice === "zero" && displayValue ) {
     displayValue += 0
   }
-  if (userChoice === "clear") {
+  if (choice === "clear") {
     displayValue = "";
     computingValue = [];
     operator = "";
     compute = false;
-    result = undefined
+    result = ""
   }
-  if (userChoice === "backspace") {
+  if (choice === "backspace") {
     displayValue = displayValue.slice(0, -1)
   }
 }
@@ -125,5 +125,7 @@ for (const btn of btns) {
     if (result != undefined) {
       displayResult.innerHTML = result;
     } 
+    console.log(result)
+    console.log(`Display Value ${displayValue}`)
   })
 }
