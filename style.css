@@ -3,6 +3,7 @@
 }
 
 .grid-container {
+  border-style: solid;
   gap: 1px 1px;
   margin: 0 auto;
   background-color: black;
@@ -41,6 +42,7 @@
 
 .display__result {
   text-align: right;
+  font-size: xx-large;
 }
 
 .btn {

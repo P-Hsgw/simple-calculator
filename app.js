@@ -1,3 +1,5 @@
+// CHANGE BEHAVIOR OF EQUALS AND FIGURE OUT WHAT'S GOING ON WITH NaN IN RESULT
+
 let displayValue = "";
 let computingValue = [];
 let operator = "";
@@ -35,29 +37,69 @@ function operate (operator, number1, number2) {
     return divide(number1, number2)
   }
 }
-
 function addOperator (choice) {
-  if (choice === "plus" && displayValue) {
+  if (choice === "plus" && displayValue && computingValue.length == 1) {
     operator = "+";
     computingValue.push(parseFloat(displayValue))
     displayValue = ""; 
+    compute = true;
+    setTimeout (() => {computingValue.length = 0;}, 0)
+    setTimeout (() => {computingValue.push(parseInt(result))}, 0)
+    console.log(computingValue)
+  } else if (choice === "plus" && displayValue) {
+    operator = "+";
+    computingValue.push(parseFloat(displayValue))
+    displayValue = ""; 
+    console.log(computingValue)
   }
-  if (choice === "minus" && displayValue) {
+  if (choice === "minus" && displayValue && computingValue.length == 1) {
+    operator = "-";
+    computingValue.push(parseFloat(displayValue))
+    displayValue = ""; 
+    compute = true;
+    setTimeout (() => {computingValue.length = 0;}, 0)
+    setTimeout (() => {computingValue.push(parseInt(result))}, 0)
+    console.log(computingValue)
+  }else if (choice === "minus" && displayValue) {
     operator = "-";
     computingValue.push(parseFloat(displayValue));
     displayValue = ""; 
   }
-  if (choice === "divide" && displayValue) {
+  if (choice === "divide" && displayValue && computingValue.length == 1) {
+    operator = "/";
+    computingValue.push(parseFloat(displayValue))
+    displayValue = ""; 
+    compute = true;
+    setTimeout (() => {computingValue.length = 0;}, 0)
+    setTimeout (() => {computingValue.push(parseInt(result))}, 0)
+    console.log(computingValue)
+  }else if (choice === "divide" && displayValue) {
     operator = "/";
     computingValue.push(parseFloat(displayValue))
     displayValue = ""; 
   }
-  if (choice === "multiply" && displayValue) {
+  if (choice === "multiply" && displayValue && computingValue.length == 1) {
+    operator = "*";
+    computingValue.push(parseFloat(displayValue))
+    displayValue = ""; 
+    compute = true;
+    setTimeout (() => {computingValue.length = 0;}, 0)
+    setTimeout (() => {computingValue.push(parseInt(result))}, 0)
+    console.log(computingValue)
+  }else if (choice === "multiply" && displayValue) {
     operator = "*";
     computingValue.push(parseFloat(displayValue))
     displayValue = ""; 
   }
-  if (choice === "equals") {
+  if (choice === "equals" && displayValue && computingValue.length == 1) {
+    operator = "=";
+    computingValue.push(parseFloat(displayValue))
+    displayValue = ""; 
+    compute = true;
+    setTimeout (() => {computingValue.length = 0;}, 0)
+    setTimeout (() => {computingValue.push(parseInt(result))}, 0)
+    console.log(computingValue)
+  }else if (choice === "equals") {
     computingValue.push(parseFloat(displayValue))
     compute = true;
     displayValue = ""; 
@@ -93,7 +135,7 @@ function displayNumbers (choice) {
   if (choice === "nine") {
     displayValue += 9
   }
-  if (choice === "dot" && displayValue.indexOf(".") === -1 ) {
+  if (choice === "dot" && displayValue.indexOf(".") === -1 && displayValue ) {
     displayValue += "."
   }
   if (choice === "zero" && displayValue ) {
@@ -117,15 +159,10 @@ for (const btn of btns) {
     userChoice = e.target.dataset.operator;
     displayNumbers(userChoice)
     addOperator(userChoice)
-    console.log(operate(operator, computingValue[0], computingValue[1]))
-    console.log(operator)
-    console.log(computingValue)
-    console.log(compute)
+    operate(operator, computingValue[0], computingValue[1])
     display.innerHTML = displayValue
     if (result != undefined) {
       displayResult.innerHTML = result;
     } 
-    console.log(result)
-    console.log(`Display Value ${displayValue}`)
   })
 }
